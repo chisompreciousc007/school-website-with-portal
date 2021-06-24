@@ -3,7 +3,8 @@ const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv/config");
-//hi
+//Setup env as development
+const environment = process.env.NODE_ENV || "production";
 
 const studentsRouter = require("./routes/students");
 const teachersRouter = require("./routes/teachers");
@@ -28,10 +29,10 @@ app.use(express.json());
 app.use("/students", studentsRouter);
 app.use("/teachers", teachersRouter);
 
-// if (process.eventNames.NODE_ENV === "production") {
+// if (environment === "production") {
 //   app.use(express.static("client/build"));
 // }
-if ((process.env.NODE_ENV || "").trim() === "production") {
+if (environment === "production" || environment === "dev") {
   app.use(express.static("client/build"));
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
