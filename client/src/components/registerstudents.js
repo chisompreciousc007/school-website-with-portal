@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Nav from "./Nav";
 import axios from "axios";
 
 function RegisterStudent() {
@@ -10,27 +11,28 @@ function RegisterStudent() {
     class: "",
     payStatus: "",
     parent_contact: "",
-    medical_condition: "NONE"
+    medical_condition: "NONE",
   });
 
   // useEffect(function init() {
   //   console.log(`data : ${data}`);
   // }, []);
-  const Submit = e => {
+  const Submit = (e) => {
     e.preventDefault();
     axios
       .post("http://localhost:4000/students/add", studentData)
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err));
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
     window.location.reload();
   };
-  const updateField = e => {
+  const updateField = (e) => {
     e.preventDefault();
     setStudentData({ ...studentData, [e.target.name]: e.target.value });
   };
 
   return (
     <div className="container" style={{ position: "absolute", top: "12%" }}>
+      <Nav />
       <form onSubmit={Submit}>
         <div className="form-group">
           <label htmlFor="name">Enter Full Name</label>

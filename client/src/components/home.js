@@ -15,7 +15,7 @@ function Home() {
             </h1>
           </div>
 
-          <nav className="nav-menu d-none d-lg-block">
+          <nav className="nav-menu  d-lg-block">
             <ul>
               <li className="active">
                 <a href="#header">Home</a>

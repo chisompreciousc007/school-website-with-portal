@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Nav from "./Nav";
 import axios from "axios";
 
 function UpdateTeacher(props) {
@@ -7,7 +8,7 @@ function UpdateTeacher(props) {
     name: "",
     subject: "",
     gender: "",
-    phone: ""
+    phone: "",
   });
 
   const getTeacher = async () => {
@@ -22,16 +23,16 @@ function UpdateTeacher(props) {
     getTeacher();
   }, []);
 
-  const Submit = e => {
+  const Submit = (e) => {
     e.preventDefault();
     const id = props.match.params.id;
     axios
       .post("http://localhost:4000/teachers/update/" + id, teacherData)
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err));
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
     props.history.push("/teachers");
   };
-  const updateField = e => {
+  const updateField = (e) => {
     e.preventDefault();
     setTeacherData({ ...teacherData, [e.target.name]: e.target.value });
   };
@@ -44,6 +45,7 @@ function UpdateTeacher(props) {
   }
   return (
     <div className="container" style={{ position: "absolute", top: "15%" }}>
+      <Nav />
       <form className="needs-validation" onSubmit={Submit}>
         <div className="form-group">
           <label htmlFor="name">Enter Full Name</label>

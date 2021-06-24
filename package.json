@@ -9,7 +9,7 @@
     "heroku-postbuild": "npm run install-client && npm run build",
     "predeploy": "npm run build",
     "deploy": "npm run build && gh-pages -d build",
-    "start": "set NODE_ENV=dev&& nodemon app.js"
+    "start": "set NODE_ENV=prod&& nodemon app.js"
   },
   "author": "",
   "license": "ISC",

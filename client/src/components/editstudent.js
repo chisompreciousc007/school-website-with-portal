@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Nav from "./Nav";
 import axios from "axios";
 
 function UpdateStudent(props) {
@@ -11,7 +12,7 @@ function UpdateStudent(props) {
     parent_contact: "",
     address: "",
     payStatus: "",
-    medical_condition: ""
+    medical_condition: "",
   });
   const getStudent = async () => {
     const id = props.match.params.id;
@@ -25,16 +26,16 @@ function UpdateStudent(props) {
     getStudent();
   }, []);
 
-  const Submit = e => {
+  const Submit = (e) => {
     e.preventDefault();
     const id = props.match.params.id;
     axios
       .post(`${url}/students/update/${id}`, studentData)
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err));
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
     props.history.push("/students");
   };
-  const updateField = e => {
+  const updateField = (e) => {
     e.preventDefault();
     setStudentData({ ...studentData, [e.target.name]: e.target.value });
   };
@@ -57,6 +58,7 @@ function UpdateStudent(props) {
 
   return (
     <div className="container" style={{ position: "absolute", top: "12%" }}>
+      <Nav />
       <form onSubmit={Submit}>
         <div className="form-group">
           <button onClick={() => console.log(studentData.payStatus)}>

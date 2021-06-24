@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import Nav from "./Nav";
 
 function Students(props) {
   const url = "http://localhost:4000";
@@ -17,6 +18,7 @@ function Students(props) {
 
   return (
     <div className="container" style={{ position: "absolute", top: "12%" }}>
+      <Nav />
       <h2>Students' list</h2>
       <div className="table-responsive-sm">
         <table className="table">

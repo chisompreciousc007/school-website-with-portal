@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import Nav from "./Nav";
 // import { Link } from "react-router-dom";
 // import UpdateTeacher from "../components/editteacher";
 
@@ -21,6 +22,7 @@ function Teachers(props) {
 
   return (
     <div className="container" style={{ position: "absolute", top: "12%" }}>
+      <Nav />
       <h2>Teachers' list</h2>
       <div className="table-responsive-sm">
         <table className="table">

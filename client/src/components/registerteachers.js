@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Nav from "./Nav";
 import axios from "axios";
 // import { link } from "react-router-dom";
 
@@ -8,25 +9,26 @@ function RegisterTeacher() {
     name: "",
     subject: "",
     gender: "m",
-    phone: ""
+    phone: "",
   });
 
-  const Submit = e => {
+  const Submit = (e) => {
     e.preventDefault();
 
     axios
       .post("http://localhost:4000/teachers/add", teacherData)
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err));
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
     window.location.reload();
   };
-  const updateField = e => {
+  const updateField = (e) => {
     e.preventDefault();
     setTeacherData({ ...teacherData, [e.target.name]: e.target.value });
   };
 
   return (
     <div className="container" style={{ position: "absolute", top: "15%" }}>
+      <Nav />
       <form className="needs-validation" onSubmit={Submit}>
         <div className="form-group">
           <label htmlFor="name">Enter Full Name</label>
